@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details — Campus OLX</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="nav-container">
+        <a href="index.html" class="logo-container">
+          <div class="logo-circle">CO</div>
+          <h2 style="margin:0; font-weight:800;">Campus OLX</h2>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html" class="nav-btn">Home</a>
+          <a href="resources.html" class="nav-btn">Resources</a>
+          <a href="about.html" class="nav-btn">About</a>
+          <a href="login.html" class="nav-btn primary">Login</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="product-detail">
+      <!-- Product details will be injected here by script.js -->
+      <div style="text-align:center; padding:100px;">
+        <p>Loading product details...</p>
+      </div>
+    </div>
+
+    <!-- Related Products -->
+    <section style="margin-top:80px">
+      <h2 style="margin-bottom:30px; color:var(--primary-color);">Similar Items</h2>
+      <div id="product-list" class="grid">
+        <!-- Injected by script.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Chat Modal -->
+  <div id="chatModal" class="chat-modal">
+    <div class="chat-header">
+      <h4 id="chatPartnerName">Chat with Seller</h4>
+      <span class="close-chat" onclick="closeChat()">&times;</span>
+    </div>
+    <div id="chatMessages" class="chat-messages">
+      <!-- Messages will be loaded here -->
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" placeholder="Type a message...">
+      <button class="send-btn" onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+
+  <footer class="container">
+    <p>© 2026 Campus OLX Lucknow University. All rights reserved.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

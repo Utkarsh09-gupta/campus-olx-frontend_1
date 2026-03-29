@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register — Campus OLX</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body style="background:#f0f2f5; display:flex; flex-direction:column; min-height:100vh;">
+  <header>
+    <div class="container">
+      <div class="nav-container">
+        <a href="index.html" class="logo-container">
+          <div class="logo-circle">CO</div>
+          <h2 style="margin:0; font-weight:800;">Campus OLX</h2>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html" class="nav-btn">Home</a>
+          <a href="resources.html" class="nav-btn">Resources</a>
+          <a href="login.html" class="nav-btn">Login</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="flex:1; display:flex; align-items:center; justify-content:center; padding:40px 0;">
+    <div class="form-container" style="width:100%; max-width:500px; margin:0;">
+      <div style="text-align:center; margin-bottom:30px;">
+        <h2 style="color:var(--primary-color); font-size:1.8rem;">Join Campus OLX</h2>
+        <p style="color:#666; margin-top:5px;">Create your account for Lucknow University</p>
+      </div>
+
+      <form id="registerForm">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="name" placeholder="John Doe" required>
+          </div>
+          <div class="form-group">
+            <label>Student ID</label>
+            <input type="text" id="studentId" placeholder="LU-12345" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>University Email</label>
+          <input type="email" id="email" placeholder="student@lu.ac.in" required>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="password" placeholder="Min 8 characters" required>
+        </div>
+
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input type="password" id="confirmPassword" placeholder="Repeat password" required>
+        </div>
+
+        <div style="margin-bottom:20px; font-size:0.85rem; color:#666;">
+          <label style="display:flex; align-items:flex-start; gap:8px; cursor:pointer;">
+            <input type="checkbox" required style="margin-top:4px;"> 
+            By signing up, you agree to our Terms of Service and Privacy Policy for campus students.
+          </label>
+        </div>
+
+        <button type="submit" class="btn-block">Create Account</button>
+      </form>
+
+      <div style="text-align:center; margin-top:25px; border-top:1px solid #eee; padding-top:20px;">
+        <p style="color:#666;">Already have an account? <a href="login.html" style="color:var(--accent-color); font-weight:700; text-decoration:none;">Login here</a></p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="container">
+    <p>© 2026 Campus OLX Lucknow University. All rights reserved.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const name = document.getElementById('name').value;
+      const pass = document.getElementById('password').value;
+      const confirmPass = document.getElementById('confirmPassword').value;
+      
+      if (pass !== confirmPass) {
+        alert('Passwords do not match!');
+        return;
+      }
+      
+      // Simulate registration
+      localStorage.setItem('campus_olx_current_user', JSON.stringify({ email, name }));
+      alert('Registration successful! Welcome to the community.');
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

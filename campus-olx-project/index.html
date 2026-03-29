@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus OLX — Home</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- 🔴 BANNER -->
+  <div style="background:var(--primary-color); color:white; padding:10px; text-align:center; font-size:0.9rem; font-weight:500;">
+    Campus OLX - Exclusive for Lucknow University Students
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="nav-container">
+        <!-- LOGO -->
+        <a href="index.html" class="logo-container">
+          <div class="logo-circle">CO</div>
+          <h2 style="margin:0; font-weight:800; letter-spacing:-0.5px;">Campus OLX</h2>
+        </a>
+
+        <!-- NAV LINKS -->
+        <nav class="nav-links">
+          <a href="index.html" class="nav-btn">Home</a>
+          <a href="resources.html" class="nav-btn">Resources</a>
+          <a href="about.html" class="nav-btn">About</a>
+          <a href="login.html" class="nav-btn primary">Login</a>
+          <a href="register.html" class="nav-btn" style="background:#eee;">Sign Up</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- 🔥 HERO -->
+    <section class="hero">
+      <h1>Buy & Sell within LU Campus</h1>
+      <p>The safest marketplace for Lucknow University students to trade books, notes, and equipment.</p>
+
+      <div class="cta-group">
+        <a href="resources.html" class="cta primary">Browse Items</a>
+        <a href="sell.html" class="cta secondary">Sell an Item</a>
+      </div>
+    </section>
+
+    <!-- 🔍 SEARCH -->
+    <div class="search-container">
+      <input id="searchInput" placeholder="Search for books, notes, or equipment...">
+      <button id="searchBtn" class="btn">Search</button>
+    </div>
+
+    <!-- 🔥 HOW IT WORKS -->
+    <section style="margin:80px 0 50px; text-align:center;">
+      <h2 style="font-size:2rem; margin-bottom:40px; color:var(--primary-color);">How it works</h2>
+
+      <div class="grid" style="grid-template-columns: repeat(3, 1fr); gap:40px;">
+        <div class="card" style="padding:40px; text-align:center; cursor:default;">
+          <div style="font-size:3rem; margin-bottom:20px;">1️⃣</div>
+          <h3>Login</h3>
+          <p style="color:#666; margin-top:10px;">Create your account using your university ID</p>
+        </div>
+
+        <div class="card" style="padding:40px; text-align:center; cursor:default;">
+          <div style="font-size:3rem; margin-bottom:20px;">2️⃣</div>
+          <h3>Post</h3>
+          <p style="color:#666; margin-top:10px;">Upload your product with details and images</p>
+        </div>
+
+        <div class="card" style="padding:40px; text-align:center; cursor:default;">
+          <div style="font-size:3rem; margin-bottom:20px;">3️⃣</div>
+          <h3>Trade</h3>
+          <p style="color:#666; margin-top:10px;">Connect with peers and trade safely on campus</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔥 PRODUCTS -->
+    <section style="margin-top:80px">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:30px;">
+        <div>
+          <h2 style="font-size:2rem; color:var(--primary-color);">Latest Products</h2>
+          <p style="color:#666;">Explore what fellow LU students are selling</p>
+        </div>
+        <a href="resources.html" style="color:var(--accent-color); font-weight:600; text-decoration:none;">View All →</a>
+      </div>
+
+      <div id="product-list" class="grid">
+        <!-- Products will be injected here by script.js -->
+        <div style="grid-column: 1/-1; text-align:center; padding:50px;">
+          <p>Loading products...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔥 CTA -->
+    <section style="margin-top:100px; padding:60px; text-align:center; background:linear-gradient(45deg, var(--primary-color), #004d56); color:white; border-radius:30px; box-shadow:0 15px 30px rgba(0,47,52,0.2);">
+      <h2 style="font-size:2.5rem; margin-bottom:20px;">Start Buying & Selling Today 🚀</h2>
+      <p style="margin-bottom:30px; opacity:0.9;">Join thousands of students saving money and promoting sustainability.</p>
+
+      <div class="cta-group">
+        <a href="login.html" class="cta primary" style="background:var(--secondary-color); color:var(--primary-color);">Login Now</a>
+        <a href="register.html" class="cta" style="border:2px solid white; color:white;">Create Account</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <div style="border-top:1px solid #eee; padding-top:40px;">
+      <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px; text-align:left; margin-bottom:40px;">
+        <div style="flex:1; min-width:200px;">
+          <h3 style="color:var(--primary-color); margin-bottom:15px;">Campus OLX</h3>
+          <p style="color:#666;">Empowering Lucknow University students to share and reuse academic resources efficiently.</p>
+        </div>
+        <div style="flex:1; min-width:150px;">
+          <h4 style="margin-bottom:15px;">Quick Links</h4>
+          <ul style="list-style:none; padding:0;">
+            <li style="margin-bottom:8px;"><a href="index.html" style="text-decoration:none; color:#666;">Home</a></li>
+            <li style="margin-bottom:8px;"><a href="resources.html" style="text-decoration:none; color:#666;">Resources</a></li>
+            <li style="margin-bottom:8px;"><a href="about.html" style="text-decoration:none; color:#666;">About Us</a></li>
+          </ul>
+        </div>
+        <div style="flex:1; min-width:150px;">
+          <h4 style="margin-bottom:15px;">Support</h4>
+          <ul style="list-style:none; padding:0;">
+            <li style="margin-bottom:8px;"><a href="contact.html" style="text-decoration:none; color:#666;">Contact</a></li>
+            <li style="margin-bottom:8px;"><a href="admin.html" style="text-decoration:none; color:#666;">Admin Panel</a></li>
+          </ul>
+        </div>
+      </div>
+      <p style="font-size:0.9rem; border-top:1px solid #f0f0f0; padding-top:20px;">© 2026 Campus OLX Lucknow University. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+
+</body>
+</html>

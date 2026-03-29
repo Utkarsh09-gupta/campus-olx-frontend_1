@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Profile — Campus OLX</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="nav-container">
+        <a href="index.html" class="logo-container">
+          <div class="logo-circle">CO</div>
+          <h2 style="margin:0; font-weight:800;">Campus OLX</h2>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html" class="nav-btn">Home</a>
+          <a href="resources.html" class="nav-btn">Resources</a>
+          <a href="#" class="nav-btn primary" onclick="logout(event)">Logout</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="margin-top:60px;">
+    <div style="display:grid; grid-template-columns: 300px 1fr; gap:40px;">
+      
+      <!-- Profile Card -->
+      <aside>
+        <div class="card" style="padding:30px; text-align:center;">
+          <div style="width:100px; height:100px; background:#e0f2f1; color:var(--accent-color); font-size:2.5rem; font-weight:800; display:flex; align-items:center; justify-content:center; border-radius:50%; margin:0 auto 20px;">
+            JD
+          </div>
+          <h2 id="userName">John Doe</h2>
+          <p id="userEmail" style="color:#666; margin-bottom:20px;">student@lu.ac.in</p>
+          <button class="btn-block" style="background:#f0f0f0; color:#333; font-size:0.9rem;" onclick="alert('Edit profile coming soon!')">Edit Profile</button>
+        </div>
+      </aside>
+
+      <!-- User's Listings -->
+      <section>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;">
+          <h2 style="color:var(--primary-color);">Your Listings</h2>
+          <a href="resources.html" class="cta primary" style="padding:8px 20px; font-size:0.9rem;">+ New Listing</a>
+        </div>
+
+        <div id="userListings" class="grid">
+          <!-- Will be filtered from all products by script.js (logic needed) -->
+          <div style="grid-column: 1/-1; text-align:center; padding:50px; background:white; border-radius:12px;">
+            <p style="color:#666;">You haven't posted any items yet.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="container">
+    <p>© 2026 Campus OLX Lucknow University. All rights reserved.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    // Simple profile script
+    const user = JSON.parse(localStorage.getItem('campus_olx_current_user'));
+    if (!user) {
+      window.location.href = 'login.html';
+    } else {
+      document.getElementById('userName').textContent = user.name;
+      document.getElementById('userEmail').textContent = user.email;
+    }
+  </script>
+</body>
+</html>

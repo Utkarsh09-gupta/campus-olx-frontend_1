@@ -71,13 +71,14 @@ function initApp() {
   // Update Navbar based on login status
   updateNavbar();
   
-  // Route-specific logic
-  const path = window.location.pathname;
-  if (path.includes('index.html') || path === '/' || path.endsWith('campus-olx-frontend_1/')) {
+  // Route-specific logic (Vercel-friendly)
+  const path = window.location.pathname.toLowerCase();
+  
+  if (path === '/' || path.includes('index')) {
     renderHomeProducts();
-  } else if (path.includes('resources.html')) {
+  } else if (path.includes('resources')) {
     renderAllProducts();
-  } else if (path.includes('product.html')) {
+  } else if (path.includes('product')) {
     renderProductDetail();
   }
 }
@@ -166,8 +167,9 @@ const searchInput = document.getElementById('searchInput');
 if (searchBtn && searchInput) {
   searchBtn.addEventListener('click', () => {
     const q = searchInput.value;
-    if (window.location.pathname.includes('index.html')) {
-      // If on home, redirect to resources with search query
+    const isHome = window.location.pathname === '/' || window.location.pathname.toLowerCase().includes('index');
+    
+    if (isHome) {
       window.location.href = `resources.html?q=${encodeURIComponent(q)}`;
     } else {
       renderAllProducts(q);
@@ -182,7 +184,7 @@ if (searchBtn && searchInput) {
 // Handle search query from URL
 const urlParams = new URLSearchParams(window.location.search);
 const query = urlParams.get('q');
-if (query && window.location.pathname.includes('resources.html')) {
+if (query && window.location.pathname.toLowerCase().includes('resources')) {
   if (searchInput) searchInput.value = query;
   renderAllProducts(query);
 }

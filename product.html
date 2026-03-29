@@ -1,67 +1,143 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Details — Campus OLX</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Product — Campus OLX</title>
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <header>
-    <div class="container">
-      <div class="nav-container">
-        <a href="index.html" class="logo-container">
-          <div class="logo-circle">CO</div>
-          <h2 style="margin:0; font-weight:800;">Campus OLX</h2>
-        </a>
-        <nav class="nav-links">
-          <a href="index.html" class="nav-btn">Home</a>
-          <a href="resources.html" class="nav-btn">Resources</a>
-          <a href="about.html" class="nav-btn">About</a>
-          <a href="login.html" class="nav-btn primary">Login</a>
-        </nav>
-      </div>
-    </div>
-  </header>
+  <div class="container">
 
-  <main class="container">
-    <div id="product-detail">
-      <!-- Product details will be injected here by script.js -->
-      <div style="text-align:center; padding:100px;">
-        <p>Loading product details...</p>
-      </div>
-    </div>
+    <header class="header">
+      <a class="brand linkless" href="index.html">
+        <div class="logo">CO</div>
+        <div>
+          <div style="font-weight:800">Campus OLX</div>
+          <div class="small">Campus resource exchange</div>
+        </div>
+      </a>
+    </header>
 
-    <!-- Related Products -->
-    <section style="margin-top:80px">
-      <h2 style="margin-bottom:30px; color:var(--primary-color);">Similar Items</h2>
-      <div id="product-list" class="grid">
-        <!-- Injected by script.js -->
-      </div>
-    </section>
-  </main>
+    <main style="margin-top:18px">
 
-  <!-- Chat Modal -->
-  <div id="chatModal" class="chat-modal">
-    <div class="chat-header">
-      <h4 id="chatPartnerName">Chat with Seller</h4>
-      <span class="close-chat" onclick="closeChat()">&times;</span>
-    </div>
-    <div id="chatMessages" class="chat-messages">
-      <!-- Messages will be loaded here -->
-    </div>
-    <div class="chat-input-area">
-      <input type="text" id="chatInput" placeholder="Type a message...">
-      <button class="send-btn" onclick="sendMessage()">➤</button>
-    </div>
+      <!-- PRODUCT -->
+      <div id="product-detail" class="card"></div>
+
+      <!-- 🔥 CHAT SECTION -->
+      <div id="chatSection" style="margin-top:20px;">
+        <button onclick="toggleChat()" class="btn">Chat with Seller</button>
+
+        <div id="chatBox" style="display:none;margin-top:10px;">
+          <div id="messages" style="border:1px solid #ccc;padding:10px;height:150px;overflow:auto;"></div>
+
+          <input id="msgInput" placeholder="Type message..." style="width:70%;">
+          <button onclick="sendMessage()">Send</button>
+        </div>
+      </div>
+
+      <!-- ⭐ RATING SYSTEM -->
+      <div style="margin-top:20px;">
+        <h3>Rate Seller</h3>
+
+        <button onclick="rateUser(1)">⭐</button>
+        <button onclick="rateUser(2)">⭐⭐</button>
+        <button onclick="rateUser(3)">⭐⭐⭐</button>
+        <button onclick="rateUser(4)">⭐⭐⭐⭐</button>
+        <button onclick="rateUser(5)">⭐⭐⭐⭐⭐</button>
+
+        <p id="ratingResult" style="margin-top:10px;"></p>
+      </div>
+
+      <!-- 🚨 REPORT SYSTEM -->
+      <div style="margin-top:20px;">
+        <button onclick="reportProduct()" style="background:red;color:white;padding:10px;border:none;border-radius:6px;">
+          🚨 Report Product
+        </button>
+        <p id="reportMsg" style="margin-top:10px;color:red;"></p>
+      </div>
+
+      <div style="margin-top:12px">
+        <a href="index.html">← Back</a>
+      </div>
+
+    </main>
+
   </div>
 
-  <footer class="container">
-    <p>© 2026 Campus OLX Lucknow University. All rights reserved.</p>
-  </footer>
+  <script>
+    const productId = localStorage.getItem("currentProduct");
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    const container = document.getElementById("product-detail");
 
-  <script src="js/script.js"></script>
+    const product = products[productId];
+
+    // 🔥 PRODUCT LOAD
+    if(product){
+      container.innerHTML = `
+        <h2>${product.title}</h2>
+        <p><strong>₹${product.price}</strong></p>
+        <p>${product.desc || "No description"}</p>
+      `;
+    } else {
+      container.innerHTML = "<p>Product not found ❌</p>";
+    }
+
+    // 🔥 CHAT SYSTEM
+    function toggleChat(){
+      const box = document.getElementById("chatBox");
+      box.style.display = box.style.display === "none" ? "block" : "none";
+      loadMessages();
+    }
+
+    function sendMessage(){
+      const input = document.getElementById("msgInput");
+      const text = input.value.trim();
+
+      if(!text) return;
+
+      let messages = JSON.parse(localStorage.getItem("chat_"+productId)) || [];
+      messages.push({text});
+
+      localStorage.setItem("chat_"+productId, JSON.stringify(messages));
+      input.value = "";
+
+      loadMessages();
+    }
+
+    function loadMessages(){
+      const box = document.getElementById("messages");
+      let messages = JSON.parse(localStorage.getItem("chat_"+productId)) || [];
+
+      box.innerHTML = messages.map(m => `<p>${m.text}</p>`).join('');
+    }
+
+    // ⭐ RATING
+    function rateUser(rating){
+      localStorage.setItem("rating_"+productId, rating);
+      document.getElementById("ratingResult").innerText = "You rated: " + rating + " ⭐";
+    }
+
+    const savedRating = localStorage.getItem("rating_"+productId);
+    if(savedRating){
+      document.getElementById("ratingResult").innerText = "You rated: " + savedRating + " ⭐";
+    }
+
+    // 🚨 REPORT SYSTEM
+    function reportProduct(){
+      let reports = JSON.parse(localStorage.getItem("reports")) || [];
+
+      reports.push({
+        productId: productId,
+        time: new Date().toLocaleString()
+      });
+
+      localStorage.setItem("reports", JSON.stringify(reports));
+
+      document.getElementById("reportMsg").innerText = "Product reported successfully 🚨";
+    }
+  </script>
+
 </body>
 </html>
