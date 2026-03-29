@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Resources — Campus OLX</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+      <a class="brand linkless" href="index.html">
+        <div class="logo">CO</div>
+        <div>
+          <div style="font-weight:800">Campus OLX</div>
+          <div class="small">Campus resource exchange</div>
+        </div>
+      </a>
+
+      <nav class="nav topbar">
+        <div class="nav-left nav">
+          <a class="navlink" href="index.html">Home</a>
+          <a class="navlink" href="about.html">About</a>
+          <a class="navlink" href="resources.html">Resources</a>
+        </div>
+
+        <div class="nav-right">
+          <a class="navlink" href="login.html">Login</a>
+          <a class="navlink" href="register.html">Register</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+
+      <div style="display:flex;gap:18px;align-items:flex-start">
+
+        <!-- LEFT SIDE -->
+        <div style="flex:1">
+
+          <!-- Listings -->
+          <div class="card">
+            <h2>Listings</h2>
+
+            <div id="listings" class="grid">
+              <div class="card item">
+                <img src="images/sample.jpg">
+                <h4>Data Structures Notes</h4>
+                <p class="small">Free notes</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <aside style="width:360px">
+
+          <!-- 🔥 ADD PRODUCT FORM -->
+          <div class="card">
+            <h3>Post a new listing</h3>
+
+            <form id="addListingForm" onsubmit="addProductFormHandler(event)">
+
+            
+
+              <div class="input">
+                <label>Title</label>
+                <input id="title" required>
+              </div>
+
+              <div class="input">
+  <labe></labe>>Upload Image</label>
+  <input type="file" id="imageInput" accept="image/*">
+</div>
+
+<img id="previewImg" style="width:100%;margin-top:10px;display:none;border-radius:10px;">
+
+              <div class="input">
+                <label>Description</label>
+                <textarea id="description" required></textarea>
+              </div>
+
+              <div class="input">
+                <label>Price</label>
+                <input id="price" required>
+              </div>
+
+              <div class="input">
+                <label>Category</label>
+                <select id="category">
+                  <option>Books</option>
+                  <option>Notes</option>
+                  <option>Stationery</option>
+                  <option>Bags</option>
+                </select>
+              </div>
+
+              <button class="btn" type="submit">Create Listing</button>
+
+            </form>
+          </div>
+
+          <!-- ACCOUNT -->
+          <div class="card" style="margin-top:12px">
+            <h3>Your account</h3>
+            <p class="small">Login to use all features</p>
+            <a class="cta" href="login.html">Login</a>
+          </div>
+
+        </aside>
+
+      </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div>© Campus OLX</div>
+    </footer>
+
+  </div>
+
+  <!-- SCRIPT -->
+  <script src="js/script.js"></script>
+
+</body>
+</html>

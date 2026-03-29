@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile - Campus OLX</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div style="text-align:center;margin-top:80px;">
+    <h2>Create Your Profile</h2>
+    <p>Only Lucknow University students allowed</p>
+
+    <input id="name" placeholder="Full Name" style="padding:10px;width:250px;"><br><br>
+
+    <input id="dept" placeholder="Department (BCA, B.Tech...)" style="padding:10px;width:250px;"><br><br>
+
+    <input id="year" placeholder="Year (1st, 2nd...)" style="padding:10px;width:250px;"><br><br>
+
+    <button onclick="saveProfile()" style="padding:10px 20px;">Save Profile</button>
+    <br><br>
+<button onclick="verifyUser()" style="padding:10px 20px;background:green;color:white;">
+  Verify Student ID
+</button>
+  </div>
+  <h3>Student Verification</h3>
+
+<input type="file" id="studentId" accept="image/*">
+
+<img id="idPreview" style="width:100%;margin-top:10px;display:none;">
+
+<button onclick="uploadID()">Upload ID</button>
+
+<p id="verifyStatus"></p>
+
+  <script>
+    function saveProfile() {
+      const name = document.getElementById("name").value;
+      const dept = document.getElementById("dept").value;
+      const year = document.getElementById("year").value;
+
+      if (!name || !dept || !year) {
+        alert("Please fill all fields");
+        return;
+      }
+
+      const profile = {
+        name,
+        dept,
+        year
+      };
+
+      localStorage.setItem("profile", JSON.stringify(profile));
+
+      alert("Profile saved successfully ✅");
+
+      window.location.href = "index.html";
+    }
+    
+function verifyUser() {
+  localStorage.setItem("verified", "true");
+  alert("Verification successful ✅");
+}
+
+  </script>
+
+</body>
+</html>

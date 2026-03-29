@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Panel - Campus OLX</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h2>👨‍💻 Admin Panel</h2>
+<img id="adminID" style="width:200px;display:block;margin:10px 0;">
+
+<button onclick="verifyUser()">Verify User</button>
+    <div style="margin-bottom:15px;">
+  <a href="index.html" style="text-decoration:none;">
+    <button style="padding:8px 14px;background:#002f34;color:white;border:none;border-radius:6px;cursor:pointer;">
+      ← Back to Home
+    </button>
+  </a>
+</div>
+
+    <!-- PRODUCTS -->
+    <div class="card">
+      <h3>All Products</h3>
+      <div id="adminProducts"></div>
+    </div>
+
+    <!-- REPORTS -->
+    <div class="card" style="margin-top:20px;">
+      <h3>Reported Products 🚨</h3>
+      <div id="adminReports"></div>
+    </div>
+
+  </div>
+
+  <script>
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    const reports = JSON.parse(localStorage.getItem("reports")) || [];
+
+    const productDiv = document.getElementById("adminProducts");
+    const reportDiv = document.getElementById("adminReports");
+
+    // 🔥 SHOW PRODUCTS
+    function loadProducts(){
+      if(products.length === 0){
+        productDiv.innerHTML = "No products";
+        return;
+      }
+
+      productDiv.innerHTML = products.map((p, i) => `
+        <div style="border:1px solid #ccc;padding:10px;margin:10px 0;">
+          <h4>${p.title}</h4>
+          <p>${p.desc}</p>
+          <strong>₹${p.price}</strong><br><br>
+
+          <button onclick="deleteProduct(${i})" style="background:red;color:white;padding:5px;">
+            Delete
+          </button>
+        </div>
+      `).join('');
+    }
+
+    // 🔥 DELETE PRODUCT
+    function deleteProduct(index){
+      products.splice(index, 1);
+      localStorage.setItem("products", JSON.stringify(products));
+      loadProducts();
+    }
+
+    // 🔥 SHOW REPORTS
+    function loadReports(){
+      if(reports.length === 0){
+        reportDiv.innerHTML = "No reports";
+        return;
+      }
+
+      reportDiv.innerHTML = reports.map(r => `
+        <div style="border:1px solid red;padding:10px;margin:10px 0;">
+          Product ID: ${r.productId} <br>
+          Time: ${r.time}
+        </div>
+      `).join('');
+    }
+
+    // INIT
+    loadProducts();
+    loadReports();
+  </script>
+
+</body>
+</html>

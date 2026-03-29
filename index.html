@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Campus OLX — Home</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- 🔴 BANNER -->
+  <div style="background:#002f34;color:white;padding:10px;text-align:center;">
+    Campus OLX - Only for Lucknow University Students
+  </div>
+
+  <div class="container">
+
+    <!-- 🔥 NAVBAR -->
+    <header style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;">
+
+      <!-- LOGO -->
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:40px;height:40px;background:#002f34;color:white;
+                    display:flex;align-items:center;justify-content:center;
+                    border-radius:50%;font-weight:bold;">
+          CO
+        </div>
+        <h2 style="margin:0;">Campus OLX</h2>
+      </div>
+
+      <!-- NAV LINKS -->
+      <div style="display:flex;align-items:center;gap:15px;">
+
+       <a href="index.html" class="nav-btn">Home</a>
+<a href="resources.html" class="nav-btn">Resources</a>
+<a href="admin.html" class="nav-btn">Admin</a>
+        <!-- 💗 LIGHT PINK BUTTONS -->
+        <a href="login.html" class="nav-btn">
+          Login
+        </a>
+
+       <a href="register.html" class="nav-btn">
+  Sign Up
+        </a>
+
+      </div>
+
+    </header>
+
+    <!-- 🔥 HERO -->
+    <section style="text-align:center;padding:60px 0;">
+      <h1 style="font-size:42px;">Buy & Sell within LU Campus</h1>
+      <p style="color:gray;">Safe marketplace only for Lucknow University students</p>
+
+      <div style="margin-top:20px;">
+        <a href="resources.html" class="cta">Browse Items</a>
+        <a href="register.html" class="cta" style="background:orange;color:black;margin-left:10px;">
+          Sell Item
+        </a>
+      </div>
+    </section>
+
+    <!-- 🔍 SEARCH -->
+    <div class="card" style="text-align:center;">
+      <input id="searchInput" placeholder="Search items..." style="width:60%;">
+      <button id="searchBtn" class="btn">Search</button>
+    </div>
+
+    <!-- 🔥 HOW IT WORKS -->
+    <section style="margin-top:50px;">
+      <h2 style="text-align:center;">How it works</h2>
+
+      <div style="display:flex;gap:20px;justify-content:center;margin-top:20px;flex-wrap:wrap;">
+
+        <div class="card" style="width:200px;text-align:center;">
+          <h3>1️⃣ Login</h3>
+          <p class="small">Create your account</p>
+        </div>
+
+        <div class="card" style="width:200px;text-align:center;">
+          <h3>2️⃣ Post</h3>
+          <p class="small">Upload your product</p>
+        </div>
+
+        <div class="card" style="width:200px;text-align:center;">
+         <h3>3️⃣ Buy / Sell</h3>
+<p class="small">Trade safely within your campus community</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 🔥 PRODUCTS -->
+    <section style="margin-top:50px">
+      <h2 style="text-align:center;">Latest Products</h2>
+      <p style="text-align:center;color:gray;">Explore what LU students are selling</p>
+
+      <div id="product-list" class="product-grid" style="margin-top:20px;"></div>
+    </section>
+
+    <!-- 🔥 CTA -->
+    <section style="margin-top:60px;padding:30px;text-align:center;background:#f5f5f5;border-radius:10px;">
+      <h2>Start Buying & Selling Today 🚀</h2>
+
+      <div style="margin-top:15px;">
+        <a href="login.html" style="padding:10px 20px;background:#ffb6c1;color:black;border-radius:6px;text-decoration:none;margin-right:10px;">
+          Login
+        </a>
+
+        <a href="register.html" style="padding:10px 20px;background:#ffb6c1;color:black;border-radius:6px;text-decoration:none;">
+          Create Account
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="margin-top:40px;text-align:center;">
+      <p>© Campus OLX</p>
+    </footer>
+
+  </div>
+
+  <script src="js/script.js"></script>
+
+  <script>
+    const list = document.getElementById('product-list');
+
+    function renderProducts(products){
+      if(products.length === 0){
+        list.innerHTML = "<p style='text-align:center;'>No products yet</p>";
+        return;
+      }
+
+      list.innerHTML = products.map((p, i) => `
+        <div class="card" onclick="openProduct(${i})" style="cursor:pointer;">
+          
+          <img src="${p.img || 'images/sample.jpg'}" class="product-img">
+
+          <h4>${p.title}</h4>
+          <p class="small">${p.desc || ''}</p>
+          <strong>₹${p.price}</strong>
+
+        </div>
+      `).join('');
+    }
+
+    function openProduct(id){
+      localStorage.setItem("currentProduct", id);
+      window.location.href = "product.html";
+    }
+
+    const allProducts = JSON.parse(localStorage.getItem('products')) || [];
+    renderProducts(allProducts);
+
+    document.getElementById('searchBtn').addEventListener('click', ()=>{
+      const q = document.getElementById('searchInput').value.toLowerCase();
+
+      const filtered = allProducts.filter(p =>
+        (p.title || '').toLowerCase().includes(q)
+      );
+
+      renderProducts(filtered);
+    });
+  </script>
+
+</body>
+</html>

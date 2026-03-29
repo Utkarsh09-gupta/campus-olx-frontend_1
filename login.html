@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login — Campus OLX</title>
+
+  <style>
+    body{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      font-family:Arial;
+      background:#f6f7fb;
+    }
+
+    .card{
+      width:350px;
+      padding:25px;
+      border-radius:12px;
+      background:white;
+      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+      text-align:center;
+    }
+
+    input{
+      width:100%;
+      padding:10px;
+      margin:10px 0;
+      border-radius:8px;
+      border:1px solid #ddd;
+    }
+
+    button{
+      width:100%;
+      padding:10px;
+      border:none;
+      border-radius:8px;
+      background:linear-gradient(45deg,#0077b6,#2b7a78);
+      color:white;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    .back{
+      position:absolute;
+      top:20px;
+      left:20px;
+      background:linear-gradient(45deg,#0077b6,#2b7a78);
+      color:white;
+      padding:8px 14px;
+      border-radius:8px;
+      text-decoration:none;
+    }
+  </style>
+</head>
+
+<body>
+
+<a href="index.html" class="back">← Back</a>
+
+<div class="card">
+  <h2>Welcome Back 👋</h2>
+<p class="small">Login to continue</p>
+
+  <h2>Login with OTP</h2>
+
+  <input type="text" id="mobile" placeholder="Enter Mobile Number">
+
+  <button onclick="sendOTP()">Send OTP</button>
+
+  <input type="text" id="otp" placeholder="Enter OTP" style="display:none;">
+
+  <button onclick="verifyOTP()" id="verifyBtn" style="display:none;">Verify OTP</button>
+
+</div>
+
+<script>
+let generatedOTP = "";
+
+function sendOTP(){
+  const mobile = document.getElementById("mobile").value;
+
+  if(mobile.length !== 10){
+    alert("Enter valid mobile number");
+    return;
+  }
+
+  // 🔥 Generate fake OTP
+  generatedOTP = Math.floor(1000 + Math.random() * 9000);
+
+  alert("Your OTP is: " + generatedOTP); // demo only
+
+  document.getElementById("otp").style.display = "block";
+  document.getElementById("verifyBtn").style.display = "block";
+}
+
+function verifyOTP(){
+  const entered = document.getElementById("otp").value;
+
+  if(entered == generatedOTP){
+    localStorage.setItem("user", "mobileUser");
+    alert("Login Successful ✅");
+    window.location.href = "index.html";
+  } else {
+    alert("Wrong OTP ❌");
+  }
+}
+</script>
+
+</body>
+</html>
