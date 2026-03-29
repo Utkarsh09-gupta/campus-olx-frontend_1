@@ -1,61 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About — Campus OLX</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Campus OLX</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <div class="container">
-    <header class="header">
-      <a class="brand linkless" href="index.html">
-        <div class="logo">CO</div>
+  <header>
+    <div class="container">
+      <div class="nav-container">
+        <a href="index.html" class="logo-container">
+          <div class="logo-circle">CO</div>
+          <h2 style="margin:0; font-weight:800;">Campus OLX</h2>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html" class="nav-btn">Home</a>
+          <a href="resources.html" class="nav-btn">Resources</a>
+          <a href="about.html" class="nav-btn">About</a>
+          <a href="login.html" class="nav-btn primary">Login</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="margin-top:60px; max-width:800px;">
+    <div class="card" style="padding:40px;">
+      <h1 style="color:var(--primary-color); margin-bottom:20px; text-align:center;">Our Mission</h1>
+      <p style="font-size:1.1rem; line-height:1.8; color:#444; margin-bottom:30px;">
+        Campus OLX is a student-driven initiative at **Lucknow University** to create a sustainable and affordable ecosystem for academic resources. We believe that knowledge should be shared, and resources should be reused.
+      </p>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:30px; margin-top:40px;">
         <div>
-          <div style="font-weight:800">Campus OLX</div>
-          <div class="small">Campus resource exchange</div>
+          <h3 style="color:var(--accent-color); margin-bottom:10px;">Safe & Secure</h3>
+          <p style="color:#666;">Exclusively for verified LU students, ensuring a trustworthy community for trading.</p>
         </div>
-      </a>
-      <nav class="nav topbar">
-        <div class="nav-left nav">
-          <a class="navlink" href="index.html">Home</a>
-          <a class="navlink" href="about.html">About</a>
-          <a class="navlink" href="resources.html">Resources</a>
+        <div>
+          <h3 style="color:var(--accent-color); margin-bottom:10px;">Eco-Friendly</h3>
+          <p style="color:#666;">By reusing books and equipment, we reduce waste and promote sustainability on campus.</p>
         </div>
-        <div class="nav-right">
-          <a class="navlink" href="login.html">Login</a>
-          <a class="navlink" href="register.html">Register</a>
+        <div>
+          <h3 style="color:var(--accent-color); margin-bottom:10px;">Affordable</h3>
+          <p style="color:#666;">Get high-quality academic materials at a fraction of the market price.</p>
         </div>
-      </nav>
-    </header>
-
-    <main>
-      <div class="card">
-        <h2>About Campus OLX</h2>
-        <p>This project is a campus-only resource exchange platform. It aims to let students post, discover, and exchange books, notes, equipment, and more.</p>
-        <h3>Key goals</h3>
-        <ul>
-          <li>Campus-verified community</li>
-          <li>Simple posting and discovery</li>
-          <li>In-app  messaging for safe negotiations</li>
-        </ul>
-        <h3>Built as a demo frontend</h3>
-        <p class="small">This website is a demonstration . Forms and actions are simulated for demo purposes.</p>
+        <div>
+          <h3 style="color:var(--accent-color); margin-bottom:10px;">Community</h3>
+          <p style="color:#666;">Built by students, for students. Helping each other succeed academically.</p>
+        </div>
       </div>
 
-      <div class="card" style="margin-top:12px">
-        <h3>Team</h3>
-        <p class="small">Prepared by Harshita Grover & Parth Puri — Computer Science & Engineering, Manipal University Jaipur</p>
+      <div style="margin-top:60px; text-align:center; padding-top:40px; border-top:1px solid #eee;">
+        <h2 style="margin-bottom:20px;">Ready to join?</h2>
+        <a href="register.html" class="cta primary">Create Student Account</a>
       </div>
-    </main>
+    </div>
+  </main>
 
-    <footer class="footer">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <div>© Campus OLX — Demo  frontend</div>
-        <div><a href="contact.html" class="linkless">Contact Us</a></div>
-      </div>
-    </footer>
-  </div>
+  <footer class="container">
+    <p>© 2026 Campus OLX Lucknow University. All rights reserved.</p>
+  </footer>
 
   <script src="js/script.js"></script>
 </body>

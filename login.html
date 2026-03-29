@@ -1,113 +1,78 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login — Campus OLX</title>
-
-  <style>
-    body{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
-      font-family:Arial;
-      background:#f6f7fb;
-    }
-
-    .card{
-      width:350px;
-      padding:25px;
-      border-radius:12px;
-      background:white;
-      box-shadow:0 10px 30px rgba(0,0,0,0.1);
-      text-align:center;
-    }
-
-    input{
-      width:100%;
-      padding:10px;
-      margin:10px 0;
-      border-radius:8px;
-      border:1px solid #ddd;
-    }
-
-    button{
-      width:100%;
-      padding:10px;
-      border:none;
-      border-radius:8px;
-      background:linear-gradient(45deg,#0077b6,#2b7a78);
-      color:white;
-      font-weight:bold;
-      cursor:pointer;
-    }
-
-    .back{
-      position:absolute;
-      top:20px;
-      left:20px;
-      background:linear-gradient(45deg,#0077b6,#2b7a78);
-      color:white;
-      padding:8px 14px;
-      border-radius:8px;
-      text-decoration:none;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body style="background:#f0f2f5; display:flex; flex-direction:column; min-height:100vh;">
+  <header>
+    <div class="container">
+      <div class="nav-container">
+        <a href="index.html" class="logo-container">
+          <div class="logo-circle">CO</div>
+          <h2 style="margin:0; font-weight:800;">Campus OLX</h2>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html" class="nav-btn">Home</a>
+          <a href="resources.html" class="nav-btn">Resources</a>
+          <a href="register.html" class="nav-btn">Register</a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-<a href="index.html" class="back">← Back</a>
+  <main class="container" style="flex:1; display:flex; align-items:center; justify-content:center; padding:40px 0;">
+    <div class="form-container" style="width:100%; max-width:450px; margin:0;">
+      <div style="text-align:center; margin-bottom:30px;">
+        <h2 style="color:var(--primary-color); font-size:1.8rem;">Welcome Back!</h2>
+        <p style="color:#666; margin-top:5px;">Login to trade within Lucknow University</p>
+      </div>
 
-<div class="card">
-  <h2>Welcome Back 👋</h2>
-<p class="small">Login to continue</p>
+      <form id="loginForm">
+        <div class="form-group">
+          <label>University Email / ID</label>
+          <input type="text" id="email" placeholder="e.g. student@lu.ac.in" required>
+        </div>
 
-  <h2>Login with OTP</h2>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="password" placeholder="••••••••" required>
+        </div>
 
-  <input type="text" id="mobile" placeholder="Enter Mobile Number">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; font-size:0.9rem;">
+          <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+            <input type="checkbox"> Remember me
+          </label>
+          <a href="#" style="color:var(--accent-color); text-decoration:none; font-weight:600;">Forgot Password?</a>
+        </div>
 
-  <button onclick="sendOTP()">Send OTP</button>
+        <button type="submit" class="btn-block">Login</button>
+      </form>
 
-  <input type="text" id="otp" placeholder="Enter OTP" style="display:none;">
+      <div style="text-align:center; margin-top:25px; border-top:1px solid #eee; padding-top:20px;">
+        <p style="color:#666;">Don't have an account? <a href="register.html" style="color:var(--accent-color); font-weight:700; text-decoration:none;">Sign Up</a></p>
+      </div>
+    </div>
+  </main>
 
-  <button onclick="verifyOTP()" id="verifyBtn" style="display:none;">Verify OTP</button>
+  <footer class="container">
+    <p>© 2026 Campus OLX Lucknow University. All rights reserved.</p>
+  </footer>
 
-</div>
-
-<script>
-let generatedOTP = "";
-
-function sendOTP(){
-  const mobile = document.getElementById("mobile").value;
-
-  if(mobile.length !== 10){
-    alert("Enter valid mobile number");
-    return;
-  }
-
-  // 🔥 Generate fake OTP
-  generatedOTP = Math.floor(1000 + Math.random() * 9000);
-
-  alert("Your OTP is: " + generatedOTP); // demo only
-
-  document.getElementById("otp").style.display = "block";
-  document.getElementById("verifyBtn").style.display = "block";
-}
-
-function verifyOTP(){
-  const entered = document.getElementById("otp").value;
-
-  if(entered == generatedOTP){
-    localStorage.setItem("user", "mobileUser");
-    alert("Login Successful ✅");
-    window.location.href = "index.html";
-  } else {
-    alert("Wrong OTP ❌");
-  }
-}
-</script>
-
+  <script src="js/script.js"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      // Simulate login
+      localStorage.setItem('campus_olx_current_user', JSON.stringify({ email, name: email.split('@')[0] }));
+      alert('Login successful! Welcome to Campus OLX.');
+      window.location.href = 'index.html';
+    });
+  </script>
 </body>
 </html>

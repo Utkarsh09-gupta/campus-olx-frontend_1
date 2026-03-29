@@ -1,132 +1,97 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resources — Campus OLX</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div class="container">
-
-    <!-- HEADER -->
-    <header class="header">
-      <a class="brand linkless" href="index.html">
-        <div class="logo">CO</div>
-        <div>
-          <div style="font-weight:800">Campus OLX</div>
-          <div class="small">Campus resource exchange</div>
-        </div>
-      </a>
-
-      <nav class="nav topbar">
-        <div class="nav-left nav">
-          <a class="navlink" href="index.html">Home</a>
-          <a class="navlink" href="about.html">About</a>
-          <a class="navlink" href="resources.html">Resources</a>
-        </div>
-
-        <div class="nav-right">
-          <a class="navlink" href="login.html">Login</a>
-          <a class="navlink" href="register.html">Register</a>
-        </div>
-      </nav>
-    </header>
-
-    <!-- MAIN -->
-    <main>
-
-      <div style="display:flex;gap:18px;align-items:flex-start">
-
-        <!-- LEFT SIDE -->
-        <div style="flex:1">
-
-          <!-- Listings -->
-          <div class="card">
-            <h2>Listings</h2>
-
-            <div id="listings" class="grid">
-              <div class="card item">
-                <img src="images/sample.jpg">
-                <h4>Data Structures Notes</h4>
-                <p class="small">Free notes</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- RIGHT SIDE -->
-        <aside style="width:360px">
-
-          <!-- 🔥 ADD PRODUCT FORM -->
-          <div class="card">
-            <h3>Post a new listing</h3>
-
-            <form id="addListingForm" onsubmit="addProductFormHandler(event)">
-
-            
-
-              <div class="input">
-                <label>Title</label>
-                <input id="title" required>
-              </div>
-
-              <div class="input">
-  <labe></labe>>Upload Image</label>
-  <input type="file" id="imageInput" accept="image/*">
-</div>
-
-<img id="previewImg" style="width:100%;margin-top:10px;display:none;border-radius:10px;">
-
-              <div class="input">
-                <label>Description</label>
-                <textarea id="description" required></textarea>
-              </div>
-
-              <div class="input">
-                <label>Price</label>
-                <input id="price" required>
-              </div>
-
-              <div class="input">
-                <label>Category</label>
-                <select id="category">
-                  <option>Books</option>
-                  <option>Notes</option>
-                  <option>Stationery</option>
-                  <option>Bags</option>
-                </select>
-              </div>
-
-              <button class="btn" type="submit">Create Listing</button>
-
-            </form>
-          </div>
-
-          <!-- ACCOUNT -->
-          <div class="card" style="margin-top:12px">
-            <h3>Your account</h3>
-            <p class="small">Login to use all features</p>
-            <a class="cta" href="login.html">Login</a>
-          </div>
-
-        </aside>
-
+  <header>
+    <div class="container">
+      <div class="nav-container">
+        <a href="index.html" class="logo-container">
+          <div class="logo-circle">CO</div>
+          <h2 style="margin:0; font-weight:800;">Campus OLX</h2>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html" class="nav-btn">Home</a>
+          <a href="resources.html" class="nav-btn">Resources</a>
+          <a href="about.html" class="nav-btn">About</a>
+          <a href="login.html" class="nav-btn primary">Login</a>
+        </nav>
       </div>
+    </div>
+  </header>
 
-    </main>
+  <main class="container" style="margin-top:40px;">
+    <div style="display:grid; grid-template-columns: 300px 1fr; gap:40px;">
+      
+      <!-- LEFT SIDE: Filters & Post Form -->
+      <aside>
+        <div class="card" style="padding:20px; position:sticky; top:100px;">
+          <h3 style="margin-bottom:20px; color:var(--primary-color);">Post a new listing</h3>
+          
+          <form id="addListingForm" onsubmit="addProductFormHandler(event)">
+            <div class="form-group">
+              <label>Item Title</label>
+              <input id="title" placeholder="e.g. Physics Textbook" required>
+            </div>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div>© Campus OLX</div>
-    </footer>
+            <div class="form-group">
+              <label>Category</label>
+              <select id="category">
+                <option>Books</option>
+                <option>Notes</option>
+                <option>Stationery</option>
+                <option>Equipment</option>
+                <option>Other</option>
+              </select>
+            </div>
 
-  </div>
+            <div class="form-group">
+              <label>Price (₹)</label>
+              <input id="price" type="number" placeholder="0 for Free" required>
+            </div>
 
-  <!-- SCRIPT -->
+            <div class="form-group">
+              <label>Description</label>
+              <textarea id="description" rows="4" placeholder="Tell us more about the item..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Upload Image</label>
+              <input type="file" id="imageInput" accept="image/*" style="padding:5px;">
+            </div>
+
+            <button class="btn-block" type="submit">Create Listing</button>
+          </form>
+        </div>
+      </aside>
+
+      <!-- RIGHT SIDE: Listings -->
+      <section>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;">
+          <h2 style="color:var(--primary-color);">Available Resources</h2>
+          <div class="search-container" style="margin:0; max-width:400px; padding:5px;">
+            <input id="searchInput" placeholder="Filter items..." style="padding:8px 15px;">
+            <button id="searchBtn" class="btn" style="padding:8px 20px;">Filter</button>
+          </div>
+        </div>
+
+        <div id="listings" class="grid">
+          <!-- Listings will be injected here by script.js -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="container">
+    <p>© 2026 Campus OLX Lucknow University. All rights reserved.</p>
+  </footer>
+
   <script src="js/script.js"></script>
-
 </body>
 </html>
