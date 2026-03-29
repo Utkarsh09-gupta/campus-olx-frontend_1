@@ -27,5 +27,4 @@ This platform helps students save money, promote reuse, and build a stronger cam
 ---
 
 ## 👩‍💻 Author
-**Harshita Grover** (23FE10CSE00168)  
-**Parth Puri**(23FE10CSE00262)
+codecartel
